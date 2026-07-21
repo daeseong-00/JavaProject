@@ -9,12 +9,14 @@ public class Student {
 	int tot;
 	double ave;
 	String grade;
+	boolean gen;
 	
 	Student(){}
 	
-	Student(int hakbun,String name,int kor,int eng,int mat){
+	Student(int hakbun,String name,boolean gen,int kor,int eng,int mat){
 		this.hakbun=hakbun;
 		this.name=name;
+		this.gen=gen;
 		this.kor=kor;
 		this.eng=eng;
 		this.mat=mat;

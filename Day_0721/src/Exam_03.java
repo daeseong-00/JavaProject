@@ -21,8 +21,8 @@ public class Exam_03 {
 		st1.mat=mat;
 		
 		//초기화 생성자 이용 시 
-		Student st2 = new Student(hakbun,name,kor,eng,mat);
-		st2.totAve();
+		//Student st2 = new Student(hakbun,name,kor,eng,mat);
+	//	st2.totAve();
 		
 		//총점, 평균을 구하여 다음과 같이 출력
 		System.out.println("학번\t이름\t국어\t영어\t수학\t총점\t평균");
