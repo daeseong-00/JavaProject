@@ -1,0 +1,85 @@
+package com.mnu.exam01;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/*
+ * 키보드로 학생정보를 입력 학생객체를 생성 List에 저장 후
+ * 총점,평균,학점을 구하여 출력
+ * [입력형식]
+ * 학생정보입력 : 1101 이학생 90 80 90 
+ * 
+ * 
+ * [출력]
+ * 번호   이름   국어   영어   수학   총점   평균   학점
+ * 
+ * [처리조건]
+ * 3명 입력,동일한 번호가 있는 경우 "이미 등록된 학생입니다" 경고 출력 후 재입력
+ */
+public class Exam_08 {
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		List<Student> sList = new ArrayList();
+		
+		for(int i=0; i<3; i++) {
+			System.out.print("학생정보입력 : ");
+			int bun = scn.nextInt();
+			String name = scn.next();
+			int kor = scn.nextInt();
+			int eng = scn.nextInt();
+			int mat = scn.nextInt();
+			
+			//학번중복검사
+			boolean bool=false;
+			for(int x=0; x<sList.size(); x++) {
+				if(bun==sList.get(x).getBun()) {
+					System.out.println(bun+"는 이미 등록된 학번입니다");
+					bool=true;//중복
+					break;
+				}
+			}
+			if(bool) {
+				i--;
+				continue;
+			
+			}
+				
+			Student stu = new Student();
+			stu.setBun(bun);
+			stu.setName(name);
+			stu.setKor(kor);
+			stu.setEng(eng);
+			stu.setMat(mat);
+			sList.add(stu);
+			
+		
+		}
+		
+		System.out.println("번호\t이름\t국어\t영어\t수학\t총점\t평균\t학점");
+		for(Student s : sList) {
+			System.out.print(s.getBun()+"\t");
+			System.out.print(s.getName()+"\t");
+			System.out.print(s.getKor()+"\t");
+			System.out.print(s.getEng()+"\t");
+			System.out.print(s.getMat()+"\t");
+			int tot = s.getKor()+s.getEng()+s.getMat();
+			double avg = tot/3.;
+			System.out.print(tot+"\t");
+			System.out.print(String.format("%.2f", avg) + "\t");
+			String grade="";
+			if(avg>=90)
+				grade = "A";
+			else if(avg>=80)
+				grade = "B";
+			else if(avg>=70)
+				grade = "C";
+			else if(avg>=60)
+				grade = "D";
+			else grade = "F";
+			System.out.print(grade + "\n");
+		}
+		
+	}
+
+}
